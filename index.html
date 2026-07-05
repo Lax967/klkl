@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 6-Month Monthsary! ❤️</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: radial-gradient(circle at center, #1a0b2e 0%, #05010d 100%);
+            color: white; font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; cursor: crosshair;
+        }
+
+        /* Intro Screen */
+        #introScreen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #05010d; z-index: 1000; display: flex;
+            align-items: center; justify-content: center;
+        }
+        .start-btn { 
+            padding: 20px 40px; font-size: 20px; border-radius: 50px; 
+            border: none; background: #ff477e; color: white; cursor: pointer;
+            box-shadow: 0 0 20px #ff477e;
+        }
+
+        /* 3D Layout */
+        .page-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            gap: 60px; perspective: 1200px;
+        }
+
+        .column { display: flex; flex-direction: column; gap: 30px; }
+
+        .envelope {
+            width: 220px; height: 140px; background: #e3beaa;
+            transform-style: preserve-3d; transition: 0.6s;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            position: relative; box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+            font-weight: bold; color: #5d3a2a; border: 2px solid #d4a896;
+        }
+        .left .envelope { transform: rotateY(25deg); }
+        .right .envelope { transform: rotateY(-25deg); }
+        .envelope:hover { transform: rotateY(0deg) scale(1.1); z-index: 10; }
+
+        /* The Letter */
+        .letter {
+            position: absolute; top: -180px; width: 240px; height: 260px;
+            background: #fffdf2; color: #333; padding: 20px; display: none;
+            z-index: 20; border-radius: 8px; box-shadow: 0 10px 30px black;
+            font-size: 14px; line-height: 1.5; border: 1px solid #ccc;
+        }
+        .envelope.open .letter { display: block; }
+
+        /* Real Flower Image */
+        .center-img { width: 200px; height: 200px; border-radius: 50%; box-shadow: 0 0 50px #ff477e; }
+    </style>
+</head>
+<body>
+
+    <div id="introScreen">
+        <button class="start-btn" onclick="this.parentElement.style.display='none'">Open My Gift</button>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="column left">
+            <div class="envelope" onclick="this.classList.toggle('open')">Happiness<div class="letter">You make me so happy...</div></div>
+            <div class="envelope" onclick="this.classList.toggle('open')">My World<div class="letter">You changed my view of life...</div></div>
+            <div class="envelope" onclick="this.classList.toggle('open')">Growth<div class="letter">I've matured so much...</div></div>
+        </div>
+
+        <img src="bouquet.png" class="center-img" alt="Bouquet">
+
+        <div class="column right">
+            <div class="envelope" onclick="this.classList.toggle('open')">Laughs<div class="letter">You are hilarious...</div></div>
+            <div class="envelope" onclick="this.classList.toggle('open')">Transformation<div class="letter">I'm a better person...</div></div>
+            <div class="envelope" onclick="this.classList.toggle('open')">6 Months<div class="letter">Happy Monthsary!</div></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            if(Math.random() > 0.1) return;
+            const heart = document.createElement('div');
+            heart.innerText = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.pointerEvents = 'none';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
